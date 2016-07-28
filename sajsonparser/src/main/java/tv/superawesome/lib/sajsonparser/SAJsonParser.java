@@ -18,11 +18,30 @@ public class SAJsonParser {
      * @param object the actual target object
      */
     public static void put(JSONObject jsonObject, String key, Object object) {
-        try {
-            jsonObject.put(key, object);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (jsonObject == null || object == null || key == null) {
+            return;
+        } else {
+            try {
+                jsonObject.put(key, object);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    public static JSONObject create (Object[] args) {
+        JSONObject jsonObject = new JSONObject();
+        if (args.length % 2 != 0) return jsonObject;
+
+        for (int i = 0; i < args.length; i+= 2) {
+            Object key = args[i];
+            Object val = args[i+1];
+            if (key instanceof  String) {
+                put(jsonObject, (String) key, val);
+            }
+        }
+
+        return jsonObject;
     }
 
     /**

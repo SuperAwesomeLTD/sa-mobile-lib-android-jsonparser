@@ -35,7 +35,7 @@ public class SAJsonParser {
      *             new Object[] { "key1", val1, "key2", val2 }
      * @return a valid JSONObject (or an empty one)
      */
-    public static JSONObject create (Object[] args) {
+    public static JSONObject newObject (Object[] args) {
         JSONObject jsonObject = new JSONObject();
         if (args.length % 2 != 0) return jsonObject;
 
@@ -48,6 +48,21 @@ public class SAJsonParser {
         }
 
         return jsonObject;
+    }
+
+    /**
+     * Create a new Json array
+     * @param args an array of arguments
+     * @return a json array object
+     */
+    public static JSONArray newArray (Object[] args) {
+        JSONArray jsonArray = new JSONArray();
+
+        for (int i = 0; i < args.length; i++) {
+            jsonArray.put(args[i]);
+        }
+
+        return jsonArray;
     }
 
     /**

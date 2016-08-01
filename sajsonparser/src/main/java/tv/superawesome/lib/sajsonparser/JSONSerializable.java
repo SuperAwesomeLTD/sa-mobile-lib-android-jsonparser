@@ -13,12 +13,18 @@ public interface JSONSerializable <T>{
      * @param json a valid JSON string
      * @throws JSONException
      */
-    public void readFromJson(JSONObject json);
+    void readFromJson (JSONObject json);
 
     /**
      * Write to Json
      * @return a valid Json String
      */
-    public JSONObject writeToJson();
+    JSONObject writeToJson ();
+
+    /**
+     * Returns if a model is valid or not
+     * @return true or false
+     */
+    boolean isValid ();
 
 }

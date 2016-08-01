@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by gabriel.coman on 28/07/16.
  */
@@ -359,6 +361,44 @@ public class SAJsonParser {
                 }
             } else return def;
         }
+    }
+
+    /**
+     * Transform a json array into a list
+     * @param jsonArray the json array
+     * @param listener a listener
+     * @return an ArrayList object
+     */
+    public static <A, B> ArrayList getListFromJsonArray(JSONArray jsonArray, SAJsonArrayInterface<A, B> listener) {
+        ArrayList result = new ArrayList();
+
+        if (jsonArray != null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                try {
+                    if (listener != null) {
+                        B jsonItem = (B)jsonArray.get(i);
+                        if (jsonItem != null) {
+                            A item = listener.traverseItem(jsonItem);
+                            if (item != null) {
+                                result.add(item);
+                            } else throw  new JSONException("");
+                        } else  throw  new JSONException("");
+                    } else throw new JSONException("");
+                } catch (JSONException ignored) {}
+            }
+        }
+
+        return result;
+    }
+    /**
+     * Function that traverses an array
+     * @param jsonObject target json object
+     * @param key the key
+     * @param listener a listener to traverse item
+     */
+    public static <A, B> ArrayList getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonArrayInterface<A, B> listener) {
+        JSONArray jsonArray = getJsonArray(jsonObject, key, new JSONArray());
+        return getListFromJsonArray(jsonArray, listener);
     }
 
     /**

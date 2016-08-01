@@ -1,6 +1,7 @@
 package tv.superawesome.lib.sajsonparser;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ public class SAJsonParser {
             try {
                 jsonObject.put(key, object);
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.d("SuperAwesome", e.toString() + "");
             }
         }
     }
@@ -61,8 +62,8 @@ public class SAJsonParser {
     public static JSONArray newArray (Object[] args) {
         JSONArray jsonArray = new JSONArray();
 
-        for (int i = 0; i < args.length; i++) {
-            jsonArray.put(args[i]);
+        for (Object arg : args) {
+            jsonArray.put(arg);
         }
 
         return jsonArray;
@@ -96,7 +97,7 @@ public class SAJsonParser {
      * @param key the key
      * @return the return type -
      */
-    public static Object get(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable Object def) {
+    public static Object get(@Nullable JSONObject jsonObject, @Nullable String key, Object def) {
         if (jsonObject == null) {
             return def;
         }
@@ -140,7 +141,7 @@ public class SAJsonParser {
      * @param def the default string to return
      * @return a string value from the JSON
      */
-    public static String getString(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable String def) {
+    public static String getString(@Nullable JSONObject jsonObject, @Nullable String key, String def) {
         if (jsonObject == null) {
             return def;
         }
@@ -351,7 +352,7 @@ public class SAJsonParser {
      * @return a json object value from the JSON
      */
     @Nullable
-    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable JSONObject def) {
+    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key, JSONObject def) {
         if (jsonObject == null) {
             return def;
         }
@@ -399,7 +400,7 @@ public class SAJsonParser {
      * @return a json array value from the JSON
      */
     @Nullable
-    public static JSONArray getJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable JSONArray def) {
+    public static JSONArray getJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, JSONArray def) {
         if (jsonObject == null) {
             return def;
         } else {
@@ -419,14 +420,14 @@ public class SAJsonParser {
      * @param listener a listener
      * @return an ArrayList object
      */
-    public static <A, B> ArrayList getListFromJsonArray(JSONArray jsonArray, SAJsonToList<A, B> listener) {
-        ArrayList result = new ArrayList();
+    public static <A, B> List<A> getListFromJsonArray(JSONArray jsonArray, SAJsonToList<A, B> listener) {
+        List<A> result = new ArrayList<>();
 
         if (jsonArray != null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 try {
                     if (listener != null) {
-                        B jsonItem = (B)jsonArray.get(i);
+                        B jsonItem = (B) jsonArray.get(i);
                         if (jsonItem != null) {
                             A item = listener.traverseItem(jsonItem);
                             if (item != null) {
@@ -434,7 +435,7 @@ public class SAJsonParser {
                             } else throw  new JSONException("");
                         } else  throw  new JSONException("");
                     } else throw new JSONException("");
-                } catch (JSONException ignored) {}
+                } catch (JSONException | ClassCastException ignored) {}
             }
         }
 
@@ -446,7 +447,7 @@ public class SAJsonParser {
      * @param key the key
      * @param listener a listener to traverse item
      */
-    public static <A, B> ArrayList getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonToList<A, B> listener) {
+    public static <A, B> List<A> getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonToList<A, B> listener) {
         JSONArray jsonArray = getJsonArray(jsonObject, key, new JSONArray());
         return getListFromJsonArray(jsonArray, listener);
     }
@@ -461,8 +462,8 @@ public class SAJsonParser {
     public static <A, B> JSONArray getJsonArrayFromList (List<B> arrayList, SAListToJson<A, B> listener) {
         JSONArray jsonArray = new JSONArray();
 
-        for (B object : arrayList) {
-            if (listener != null) {
+        if (listener != null) {
+            for (B object : arrayList) {
                 A item = listener.traverseItem(object);
                 if (item != null) {
                     jsonArray.put(item);

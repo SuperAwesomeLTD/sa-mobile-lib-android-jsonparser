@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gabriel.coman on 28/07/16.
@@ -321,6 +322,55 @@ public class SAJsonParser {
     }
 
     /**
+     * Get a specific json object value w/ a default value
+     * @param jsonObject target json object
+     * @param key the key
+     * @return a json object value from the JSON
+     */
+    @Nullable
+    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key) {
+        if (jsonObject == null) {
+            return null;
+        }
+        else  {
+            if (!jsonObject.isNull(key)) {
+                try {
+                    return jsonObject.getJSONObject(key);
+                } catch (JSONException e) {
+                    return null;
+                }
+            } else return null;
+        }
+    }
+
+    /**
+     * Get a specific json object value w/ a default value
+     * @param jsonObject target json object
+     * @param key the key
+     * @param def the default json object to return
+     * @return a json object value from the JSON
+     */
+    @Nullable
+    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable JSONObject def) {
+        if (jsonObject == null) {
+            return def;
+        }
+        else  {
+            if (!jsonObject.isNull(key)) {
+                try {
+                    return jsonObject.getJSONObject(key);
+                } catch (JSONException e) {
+                    return def;
+                }
+            } else return def;
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Array functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
      * Get a specific json array value w/ a default value
      * @param jsonObject target json object
      * @param key the key
@@ -369,7 +419,7 @@ public class SAJsonParser {
      * @param listener a listener
      * @return an ArrayList object
      */
-    public static <A, B> ArrayList getListFromJsonArray(JSONArray jsonArray, SAJsonArrayInterface<A, B> listener) {
+    public static <A, B> ArrayList getListFromJsonArray(JSONArray jsonArray, SAJsonToList<A, B> listener) {
         ArrayList result = new ArrayList();
 
         if (jsonArray != null) {
@@ -396,53 +446,30 @@ public class SAJsonParser {
      * @param key the key
      * @param listener a listener to traverse item
      */
-    public static <A, B> ArrayList getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonArrayInterface<A, B> listener) {
+    public static <A, B> ArrayList getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonToList<A, B> listener) {
         JSONArray jsonArray = getJsonArray(jsonObject, key, new JSONArray());
         return getListFromJsonArray(jsonArray, listener);
     }
 
     /**
-     * Get a specific json object value w/ a default value
-     * @param jsonObject target json object
-     * @param key the key
-     * @return a json object value from the JSON
+     * Transform a normal ArrayList to a JSONArray
+     * @param arrayList the array list, on generic <A>
+     * @param listener the listner
+     * @param <A> the generic param
+     * @return a JSON array
      */
-    @Nullable
-    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key) {
-        if (jsonObject == null) {
-            return null;
-        }
-        else  {
-            if (!jsonObject.isNull(key)) {
-                try {
-                    return jsonObject.getJSONObject(key);
-                } catch (JSONException e) {
-                    return null;
-                }
-            } else return null;
-        }
-    }
+    public static <A, B> JSONArray getJsonArrayFromList (List<B> arrayList, SAListToJson<A, B> listener) {
+        JSONArray jsonArray = new JSONArray();
 
-    /**
-     * Get a specific json object value w/ a default value
-     * @param jsonObject target json object
-     * @param key the key
-     * @param def the default json object to return
-     * @return a json object value from the JSON
-     */
-    @Nullable
-    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key, @Nullable JSONObject def) {
-        if (jsonObject == null) {
-            return def;
-        }
-        else  {
-            if (!jsonObject.isNull(key)) {
-                try {
-                    return jsonObject.getJSONObject(key);
-                } catch (JSONException e) {
-                    return def;
+        for (B object : arrayList) {
+            if (listener != null) {
+                A item = listener.traverseItem(object);
+                if (item != null) {
+                    jsonArray.put(item);
                 }
-            } else return def;
+            }
         }
+
+        return jsonArray;
     }
 }

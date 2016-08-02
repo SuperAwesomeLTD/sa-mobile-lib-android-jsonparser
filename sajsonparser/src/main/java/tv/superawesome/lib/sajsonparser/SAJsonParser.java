@@ -1,6 +1,5 @@
 package tv.superawesome.lib.sajsonparser;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -75,8 +74,7 @@ public class SAJsonParser {
      * @param key the key
      * @return the return type -
      */
-    @Nullable
-    public static Object get(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static Object get( JSONObject jsonObject,  String key) {
         if (jsonObject == null) {
             return null;
         }
@@ -97,7 +95,7 @@ public class SAJsonParser {
      * @param key the key
      * @return the return type -
      */
-    public static Object get(@Nullable JSONObject jsonObject, @Nullable String key, Object def) {
+    public static Object get( JSONObject jsonObject, String key, Object def) {
         if (jsonObject == null) {
             return def;
         }
@@ -118,8 +116,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a string value from the JSON
      */
-    @Nullable
-    public static String getString(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static String getString(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return null;
         }
@@ -141,7 +138,7 @@ public class SAJsonParser {
      * @param def the default string to return
      * @return a string value from the JSON
      */
-    public static String getString(@Nullable JSONObject jsonObject, @Nullable String key, String def) {
+    public static String getString(JSONObject jsonObject, String key, String def) {
         if (jsonObject == null) {
             return def;
         }
@@ -162,7 +159,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a boolean value from the JSON
      */
-    public static boolean getBoolean(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static boolean getBoolean(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return false;
         } else {
@@ -183,7 +180,7 @@ public class SAJsonParser {
      * @param def the default boolean to return
      * @return a boolean value from the JSON
      */
-    public static boolean getBoolean(@Nullable JSONObject jsonObject, @Nullable String key, boolean def) {
+    public static boolean getBoolean(JSONObject jsonObject, String key, boolean def) {
         if (jsonObject == null) {
             return def;
         } else {
@@ -203,7 +200,7 @@ public class SAJsonParser {
      * @param key the key
      * @return an integer value from the JSON
      */
-    public static int getInt(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static int getInt(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return 0;
         }
@@ -225,7 +222,7 @@ public class SAJsonParser {
      * @param def the default integer to return
      * @return a integer value from the JSON
      */
-    public static int getInt(@Nullable JSONObject jsonObject, @Nullable String key, int def) {
+    public static int getInt(JSONObject jsonObject, String key, int def) {
         if (jsonObject == null) {
             return def;
         }
@@ -246,7 +243,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a double value from the JSON
      */
-    public static double getDouble(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static double getDouble(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return 0;
         } else {
@@ -267,7 +264,7 @@ public class SAJsonParser {
      * @param def the default double to return
      * @return a double value from the JSON
      */
-    public static double getDouble(@Nullable JSONObject jsonObject, @Nullable String key, double def) {
+    public static double getDouble(JSONObject jsonObject, String key, double def) {
         if (jsonObject == null) {
             return def;
         } else {
@@ -287,7 +284,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a long value from the JSON
      */
-    public static long getLong(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static long getLong(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return 0;
         } else {
@@ -308,7 +305,7 @@ public class SAJsonParser {
      * @param def the default long to return
      * @return a long value from the JSON
      */
-    public static long getLong(@Nullable JSONObject jsonObject, @Nullable String key, long def) {
+    public static long getLong(JSONObject jsonObject, String key, long def) {
         if (jsonObject == null) {
             return def;
         } else {
@@ -328,8 +325,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a json object value from the JSON
      */
-    @Nullable
-    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static JSONObject getJsonObject(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return null;
         }
@@ -351,8 +347,7 @@ public class SAJsonParser {
      * @param def the default json object to return
      * @return a json object value from the JSON
      */
-    @Nullable
-    public static JSONObject getJsonObject(@Nullable JSONObject jsonObject, @Nullable String key, JSONObject def) {
+    public static JSONObject getJsonObject(JSONObject jsonObject, String key, JSONObject def) {
         if (jsonObject == null) {
             return def;
         }
@@ -377,8 +372,7 @@ public class SAJsonParser {
      * @param key the key
      * @return a json array value from the JSON
      */
-    @Nullable
-    public static JSONArray getJsonArray(@Nullable JSONObject jsonObject, @Nullable String key) {
+    public static JSONArray getJsonArray(JSONObject jsonObject, String key) {
         if (jsonObject == null) {
             return null;
         } else {
@@ -399,8 +393,7 @@ public class SAJsonParser {
      * @param def the default json array to return
      * @return a json array value from the JSON
      */
-    @Nullable
-    public static JSONArray getJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, JSONArray def) {
+    public static JSONArray getJsonArray(JSONObject jsonObject, String key, JSONArray def) {
         if (jsonObject == null) {
             return def;
         } else {
@@ -447,7 +440,7 @@ public class SAJsonParser {
      * @param key the key
      * @param listener a listener to traverse item
      */
-    public static <A, B> List<A> getListFromJsonArray(@Nullable JSONObject jsonObject, @Nullable String key, SAJsonToList<A, B> listener) {
+    public static <A, B> List<A> getListFromJsonArray(JSONObject jsonObject, String key, SAJsonToList<A, B> listener) {
         JSONArray jsonArray = getJsonArray(jsonObject, key, new JSONArray());
         return getListFromJsonArray(jsonArray, listener);
     }

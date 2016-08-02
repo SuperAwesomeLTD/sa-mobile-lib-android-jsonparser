@@ -13,7 +13,7 @@ def gitUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-lib-android-jsonparse
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '24.0.1'
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         minSdkVersion 11
@@ -26,10 +26,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -81,5 +77,4 @@ install {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
 }

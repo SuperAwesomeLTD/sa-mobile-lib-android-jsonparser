@@ -54,6 +54,42 @@ public class SAJsonParser {
     }
 
     /**
+     * Init a Json object from a string, w/o the hassle of try/catch
+     * @param json the JSON string
+     * @return a valid JSON object
+     */
+    public static JSONObject newObject (String json) {
+        if (json == null) {
+            return new JSONObject();
+        } else {
+            try {
+                return new JSONObject(json);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return new JSONObject();
+            }
+        }
+    }
+
+    /**
+     * Init a JSON array from a string, w/o the hassle of try/catch
+     * @param json the JSON string
+     * @return a valid JSON array
+     */
+    public static JSONArray newArray (String json) {
+        if (json == null) {
+            return new JSONArray();
+        } else {
+            try {
+                return new JSONArray(json);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return new JSONArray();
+            }
+        }
+    }
+
+    /**
      * Create a new Json array
      * @param args an array of arguments
      * @return a json array object

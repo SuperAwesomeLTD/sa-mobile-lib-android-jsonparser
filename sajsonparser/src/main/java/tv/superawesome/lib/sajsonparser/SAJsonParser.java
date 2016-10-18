@@ -21,13 +21,30 @@ public class SAJsonParser {
      * @param object the actual target object
      */
     public static void put(JSONObject jsonObject, String key, Object object) {
-        if (jsonObject == null || object == null || key == null) {
-            return;
-        } else {
+
+        // checks
+        if (jsonObject == null) return;
+        if (key == null) return;
+
+        // if current object is null the just add a standard NULL to the JSON
+        if (object == null) {
+            try {
+                jsonObject.put(key, JSONObject.NULL);
+            } catch (JSONException ignored) {
+            }
+        }
+        // if object isn't NULL and is a subclass of SABaseObject
+        else if (object != null && object instanceof SABaseObject) {
+            try {
+                jsonObject.put(key, ((SABaseObject) object).writeToJson());
+            } catch (JSONException ignored) {
+            }
+        }
+        // if it's any other object just add it
+        else {
             try {
                 jsonObject.put(key, object);
-            } catch (JSONException e) {
-                Log.d("SuperAwesome", e.toString() + "");
+            } catch (JSONException ignored) {
             }
         }
     }

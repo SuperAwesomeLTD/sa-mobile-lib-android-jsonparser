@@ -299,10 +299,10 @@ public class SAJsonParser {
      */
     public static long getLong(JSONObject jsonObject, String key) {
         Object object = get(jsonObject, key);
-        if (object != null && object instanceof Long) {
-            return (Long) object;
+        if (object != null && object instanceof Integer) {
+            return ((Integer) object).longValue();
         } else {
-            return 0;
+            return 0L;
         }
     }
 
@@ -315,8 +315,8 @@ public class SAJsonParser {
      */
     public static long getLong(JSONObject jsonObject, String key, long def) {
         Object object = get(jsonObject, key);
-        if (object != null && object instanceof Long) {
-            return (Long) object;
+        if (object != null && object instanceof Integer) {
+            return ((Integer) object).longValue();
         } else {
             return def;
         }

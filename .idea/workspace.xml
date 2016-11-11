@@ -6,13 +6,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c3addc1-8717-4d05-a2bc-67399a0db7bd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/circle.yml" afterPath="$PROJECT_DIR$/circle.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sajsonparser/build.gradle" afterPath="$PROJECT_DIR$/sajsonparser/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sajsonparser/sajsonparser.iml" afterPath="$PROJECT_DIR$/sajsonparser/sajsonparser.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sajsonparser/src/main/java/tv/superawesome/lib/sajsonparser/SAJsonParser.java" afterPath="$PROJECT_DIR$/sajsonparser/src/main/java/tv/superawesome/lib/sajsonparser/SAJsonParser.java" />
-    </list>
+    <list default="true" id="1c3addc1-8717-4d05-a2bc-67399a0db7bd" name="Default" comment="" />
     <ignored path="sa-mobile-lib-android-jsonparser.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -145,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SABaseObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sajsonparser/src/main/java/tv/superawesome/lib/sajsonparser/SABaseObject.java">
+      <file leaf-file-name="local.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.35211268">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -211,10 +205,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestSuite.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestSuite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/TestSuite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59859157">
+            <state vertical-scroll-proportion="0.0">
               <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -2569,13 +2563,13 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/SAJsonParser_Object_Serialization_Tests.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/modelspace/SAEmployee.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/modelspace/SAPosition.java" />
-        <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/sajsonparser/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/modelspace/SALongHolder.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/SAJsonParser_Object_Deserialization_Tests.java" />
         <option value="$PROJECT_DIR$/sajsonparser/src/main/java/tv/superawesome/lib/sajsonparser/SAJsonParser.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/SAJsonParser_Dictionary_Serialization_Tests.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/SAJsonParser_Array_Serialization_Tests.java" />
+        <option value="$PROJECT_DIR$/local.properties" />
       </list>
     </option>
   </component>
@@ -3256,7 +3250,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2846924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43672457" sideWeight="0.48855507" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43672457" sideWeight="0.48855507" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3578,14 +3572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sajsonparser/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3723,11 +3709,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/tv/superawesome/lib/TestSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59859157">
+        <state vertical-scroll-proportion="0.0">
           <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35211268">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

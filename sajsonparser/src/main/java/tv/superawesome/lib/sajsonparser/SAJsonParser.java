@@ -1,6 +1,8 @@
+/**
+ * Copyright:   SuperAwesome Trading Limited 2017
+ * Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ */
 package tv.superawesome.lib.sajsonparser;
-
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gabriel.coman on 28/07/16.
+ * Class that groups together a large number of methods needed to do proper JSON parsing.
+ * It also tries to respect the null-object-pattern so that no matter what you throw at it it'll
+ * return a valid valie, not a null
  */
 public class SAJsonParser {
 
@@ -120,10 +124,6 @@ public class SAJsonParser {
 
         return jsonArray;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // Safe get methods
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Standard get functions
@@ -383,10 +383,6 @@ public class SAJsonParser {
             return def;
         }
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // More specific array-to-list-and-back methods
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Transform a json array into a list

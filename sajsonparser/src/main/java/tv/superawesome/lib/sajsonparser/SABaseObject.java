@@ -1,6 +1,6 @@
 /**
- * Copyright:   SuperAwesome Trading Limited 2017
- * Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
+ * @Copyright:   SuperAwesome Trading Limited 2017
+ * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
  */
 package tv.superawesome.lib.sajsonparser;
 
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /**
  * This acts as a type of base object for all models that might be used later on by the SDK.
  * It already contains an implementation for the basic methods that would need to be
- * implemented by a "SAJsonSerializable" object
+ * implemented by a "Serializable" object
  */
 public class SABaseObject implements SAJsonSerializable {
 

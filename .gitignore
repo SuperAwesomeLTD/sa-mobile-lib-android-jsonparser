@@ -2,3 +2,6 @@ build/*
 wrapper/*
 .gradle/*
 local.properties
+sajsonparser/java_pid*
+java_pid*
+app/java_pid*

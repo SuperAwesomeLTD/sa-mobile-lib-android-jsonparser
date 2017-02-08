@@ -60,7 +60,7 @@ public class SAJsonParser_Array_Serialization_Tests extends ApplicationTestCase<
         });
 
         // when
-        String expected = "[3,\"name\",{\"age\":32,\"name\":\"John\"},{\"age\":null,\"name\":\"mary\"}]";
+        String expected = "[3,\"name\",{\"age\":32,\"name\":\"John\"},{\"name\":\"mary\"}]";
 
         // then
         String result = given.toString();
@@ -71,6 +71,33 @@ public class SAJsonParser_Array_Serialization_Tests extends ApplicationTestCase<
             assertNotNull(expectedArray);
             assertNotNull(resultArray);
             JSONAssert.assertEquals(expectedArray, resultArray, false);
+        } catch (JSONException e) {
+            fail("Exception occurred " + e.toString());
+        }
+    }
+
+    @SmallTest
+    public void testArray3 () {
+        // given
+        JSONArray given1 = SAJsonParser.newArray((String)null);
+        JSONArray given2 = SAJsonParser.newArray((Object[]) null);
+
+        // when
+        String expected = "[]";
+
+        // then
+        String result1 = given1.toString();
+        String result2 = given2.toString();
+
+        try {
+            JSONArray expectedArray = new JSONArray(expected);
+            JSONArray resultArray1 = new JSONArray(result1);
+            JSONArray resultArray2 = new JSONArray(result2);
+            assertNotNull(expectedArray);
+            assertNotNull(resultArray1);
+            assertNotNull(resultArray2);
+            JSONAssert.assertEquals(expectedArray, resultArray1, false);
+            JSONAssert.assertEquals(expectedArray, resultArray2, false);
         } catch (JSONException e) {
             fail("Exception occurred " + e.toString());
         }

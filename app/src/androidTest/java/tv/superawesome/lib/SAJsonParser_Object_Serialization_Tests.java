@@ -164,7 +164,7 @@ public class SAJsonParser_Object_Serialization_Tests extends ApplicationTestCase
         JSONArray arr = new JSONArray().put(pos);
         JSONObject expected = new JSONObject();
         try {
-            expected.put("name", JSONObject.NULL).put("age", 32).put("isActive", false).put("position", JSONObject.NULL).put("previous", arr);
+            expected.put("age", 32).put("isActive", false).put("previous", arr);
         } catch (JSONException e) {
             e.printStackTrace();
         }

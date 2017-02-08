@@ -8,6 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONAssert;
 
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 
 /**
@@ -20,7 +23,6 @@ public class SAJsonParser_Dictionary_Serialization_Tests extends ApplicationTest
 
     @SmallTest
     public void testJSON1 () {
-        // given
         JSONObject given = SAJsonParser.newObject(new Object[] {
                 "given", 23
         });
@@ -71,7 +73,7 @@ public class SAJsonParser_Dictionary_Serialization_Tests extends ApplicationTest
         });
 
         // expected
-        String expected = "{\"isOK\":true,\"value\":3.5,\"given\":23,\"name\":null}";
+        String expected = "{\"isOK\":true,\"value\":3.5,\"given\":23}";
 
         // then
         String result = given.toString();
@@ -192,6 +194,33 @@ public class SAJsonParser_Dictionary_Serialization_Tests extends ApplicationTest
             assertNotNull(expectedJson);
             assertNotNull(resultJson);
             JSONAssert.assertEquals(expectedJson, resultJson, false);
+        } catch (JSONException e) {
+            fail("Exception occurred " + e.toString());
+        }
+    }
+
+    @SmallTest
+    public void testJSON8 () {
+        // given
+        JSONObject given1 = SAJsonParser.newObject((String) null);
+        JSONObject given2 = SAJsonParser.newObject((Object[]) null);
+
+        // expected
+        String expected = "{}";
+
+        // then
+        String result1 = given1.toString();
+        String result2 = given2.toString();
+
+        try {
+            JSONObject expectedJson = new JSONObject(expected);
+            JSONObject resultJson1 = new JSONObject(result1);
+            JSONObject resultJson2 = new JSONObject(result2);
+            assertNotNull(expectedJson);
+            assertNotNull(resultJson1);
+            assertNotNull(resultJson2);
+            JSONAssert.assertEquals(expectedJson, resultJson1, false);
+            JSONAssert.assertEquals(expectedJson, resultJson2, false);
         } catch (JSONException e) {
             fail("Exception occurred " + e.toString());
         }

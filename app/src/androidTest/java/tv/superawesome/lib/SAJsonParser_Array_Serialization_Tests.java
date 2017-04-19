@@ -22,9 +22,7 @@ public class SAJsonParser_Array_Serialization_Tests extends ApplicationTestCase<
     @SmallTest
     public void testArray1 () {
         // given
-        JSONArray given = SAJsonParser.newArray(new Object[] {
-            3, 2, "name", null
-        });
+        JSONArray given = SAJsonParser.newArray(3, 2, "name", null);
 
         // then
         String expected = "[3,2,\"name\",null]";
@@ -46,18 +44,15 @@ public class SAJsonParser_Array_Serialization_Tests extends ApplicationTestCase<
     @SmallTest
     public void testArray2 () {
         // given
-        JSONArray given = SAJsonParser.newArray(new Object[] {
+        JSONArray given = SAJsonParser.newArray(
                 3,
                 "name",
-                SAJsonParser.newObject(new Object[] {
+                SAJsonParser.newObject(
                         "name", "John",
-                        "age", 32
-                }),
-                SAJsonParser.newObject(new Object[] {
+                        "age", 32),
+                SAJsonParser.newObject(
                         "name", "mary",
-                        "age", null
-                })
-        });
+                        "age", null));
 
         // when
         String expected = "[3,\"name\",{\"age\":32,\"name\":\"John\"},{\"name\":\"mary\"}]";

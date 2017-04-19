@@ -9,13 +9,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Class that groups together a large number of methods needed to do proper JSON parsing.
  * It also tries to respect the null-object-pattern so that no matter what you throw at it it'll
- * return a valid valie, not a null
+ * return a valid value, not a null
  */
 public class SAJsonParser {
 
@@ -58,34 +57,31 @@ public class SAJsonParser {
 
     /**
      * Create a JSON object more elegantly
-     * @param objects   an array of key-value pairs given as
-     *                  new Object[] { "key1", val1, "key2", val2 }
-     * @return          a valid JSONObject (or an empty one)
+     * @param args   an array of key-value pairs given as
+     *               "key1", val1, "key2", val2
+     * @return       a valid JSONObject (or an empty one)
      */
-    public static JSONObject newObject (Object[] objects) {
+    public static JSONObject newObject (Object... args) {
 
         // create a new json Object
         JSONObject jsonObject = new JSONObject();
 
         // exit immediately
-        if (objects == null) return jsonObject;
-
-        // form a list of args
-        List<Object> args = Arrays.asList(objects);
+        if (args == null || args.length == 0) return jsonObject;
 
         // go through it, two at a time
-        for (int i = 0; i < args.size(); i+= 2) {
+        for (int i = 0; i < args.length; i += 2) {
 
             Object key = null, val = null;
 
             try {
-                key = args.get(i);
+                key = args[i];
             } catch (IndexOutOfBoundsException e) {
                 // do nothing
             }
 
             try {
-                val = args.get(i+1);
+                val = args[i+1];
             } catch (IndexOutOfBoundsException e) {
                 // do nothing
             }
@@ -94,6 +90,7 @@ public class SAJsonParser {
             if (key != null && key instanceof String && val != null) {
                 put(jsonObject, (String) key, val);
             }
+
         }
 
         // return the json
@@ -142,7 +139,7 @@ public class SAJsonParser {
      * @param args  an array of arguments
      * @return      a json array object
      */
-    public static JSONArray newArray (Object[] args) {
+    public static JSONArray newArray (Object... args) {
         JSONArray jsonArray = new JSONArray();
 
         // exit immediately
@@ -236,10 +233,9 @@ public class SAJsonParser {
      * @return           a boolean value from the JSON
      */
     public static boolean getBoolean(JSONObject jsonObject, String key) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Boolean) {
-            return (Boolean) object;
-        } else {
+        try {
+            return jsonObject.getBoolean(key);
+        } catch (Exception e) {
             return false;
         }
     }
@@ -252,10 +248,9 @@ public class SAJsonParser {
      * @return           a boolean value from the JSON
      */
     public static boolean getBoolean(JSONObject jsonObject, String key, boolean def) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Boolean) {
-            return (Boolean) object;
-        } else {
+        try {
+            return jsonObject.getBoolean(key);
+        } catch (Exception e) {
             return def;
         }
     }
@@ -267,10 +262,9 @@ public class SAJsonParser {
      * @return           an integer value from the JSON
      */
     public static int getInt(JSONObject jsonObject, String key) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Integer) {
-            return (Integer) object;
-        } else {
+        try {
+            return jsonObject.getInt(key);
+        } catch (Exception e) {
             return 0;
         }
     }
@@ -283,10 +277,9 @@ public class SAJsonParser {
      * @return           a integer value from the JSON
      */
     public static int getInt(JSONObject jsonObject, String key, int def) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Integer) {
-            return (Integer) object;
-        } else {
+        try {
+            return jsonObject.getInt(key);
+        } catch (Exception e) {
             return def;
         }
     }
@@ -298,10 +291,9 @@ public class SAJsonParser {
      * @return           a double value from the JSON
      */
     public static double getDouble(JSONObject jsonObject, String key) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Double) {
-            return (Double) object;
-        } else {
+        try {
+            return jsonObject.getDouble(key);
+        } catch (Exception e) {
             return 0;
         }
     }
@@ -314,10 +306,9 @@ public class SAJsonParser {
      * @return           a double value from the JSON
      */
     public static double getDouble(JSONObject jsonObject, String key, double def) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Double) {
-            return (Double) object;
-        } else {
+        try {
+            return jsonObject.getDouble(key);
+        } catch (Exception e) {
             return def;
         }
     }
@@ -329,10 +320,9 @@ public class SAJsonParser {
      * @return           a long value from the JSON
      */
     public static long getLong(JSONObject jsonObject, String key) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Integer) {
-            return ((Integer) object).longValue();
-        } else {
+        try {
+            return jsonObject.getLong(key);
+        } catch (Exception e) {
             return 0L;
         }
     }
@@ -345,10 +335,9 @@ public class SAJsonParser {
      * @return           a long value from the JSON
      */
     public static long getLong(JSONObject jsonObject, String key, long def) {
-        Object object = get(jsonObject, key);
-        if (object != null && object instanceof Integer) {
-            return ((Integer) object).longValue();
-        } else {
+        try {
+            return jsonObject.getLong(key);
+        } catch (Exception e) {
             return def;
         }
     }

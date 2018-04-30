@@ -33,8 +33,4 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:design:26.1.0'
     compile project(':sajsonparser')
-    compile 'org.skyscreamer:jsonassert:1.3.0'
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
-    testCompile 'junit:junit:4.12'
 }

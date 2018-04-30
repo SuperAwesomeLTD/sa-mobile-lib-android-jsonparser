@@ -110,7 +110,6 @@ public class SAJsonParser {
             try {
                 return new JSONObject(json);
             } catch (JSONException e) {
-                e.printStackTrace();
                 return new JSONObject();
             }
         }
@@ -128,7 +127,6 @@ public class SAJsonParser {
             try {
                 return new JSONArray(json);
             } catch (JSONException e) {
-                e.printStackTrace();
                 return new JSONArray();
             }
         }

@@ -77,6 +77,7 @@ public class TestSAJsonParser_ParseArray {
 
         // then
         JSONArray expected = new JSONArray();
+
         JSONAssert.assertEquals(expected, result, false);
     }
 

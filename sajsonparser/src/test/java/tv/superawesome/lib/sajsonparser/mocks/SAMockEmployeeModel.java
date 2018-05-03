@@ -12,14 +12,14 @@ import tv.superawesome.lib.sajsonparser.SAListToJson;
 /**
  * Created by gabriel.coman on 18/10/16.
  */
-public class SAEmployee extends SABaseObject {
+public class SAMockEmployeeModel extends SABaseObject {
     public String name;
     public int age;
     public boolean isActive;
-    public SAPosition position;
-    public List<SAPosition> previous;
+    public SAMockPositionModel position;
+    public List<SAMockPositionModel> previous;
 
-    public SAEmployee (String name, int age, boolean isActive, SAPosition position, List<SAPosition> previous) {
+    public SAMockEmployeeModel(String name, int age, boolean isActive, SAMockPositionModel position, List<SAMockPositionModel> previous) {
         this.name = name;
         this.age = age;
         this.isActive = isActive;
@@ -27,7 +27,7 @@ public class SAEmployee extends SABaseObject {
         this.previous = previous;
     }
 
-    public SAEmployee (JSONObject jsonObject) {
+    public SAMockEmployeeModel(JSONObject jsonObject) {
         super(jsonObject);
     }
 
@@ -36,11 +36,11 @@ public class SAEmployee extends SABaseObject {
         name = SAJsonParser.getString(json, "name");
         age = SAJsonParser.getInt(json, "age");
         isActive = SAJsonParser.getBoolean(json, "isActive");
-        position = new SAPosition(SAJsonParser.getJsonObject(json, "position"));
-        previous = SAJsonParser.getListFromJsonArray(json, "previous", new SAJsonToList<SAPosition, JSONObject>() {
+        position = new SAMockPositionModel(SAJsonParser.getJsonObject(json, "position"));
+        previous = SAJsonParser.getListFromJsonArray(json, "previous", new SAJsonToList<SAMockPositionModel, JSONObject>() {
             @Override
-            public SAPosition traverseItem(JSONObject param) {
-                return new SAPosition(param);
+            public SAMockPositionModel traverseItem(JSONObject param) {
+                return new SAMockPositionModel(param);
             }
         });
     }
@@ -51,9 +51,9 @@ public class SAEmployee extends SABaseObject {
                 "age", age,
                 "isActive", isActive,
                 "position", position,
-                "previous", SAJsonParser.getJsonArrayFromList(previous, new SAListToJson<JSONObject, SAPosition>() {
+                "previous", SAJsonParser.getJsonArrayFromList(previous, new SAListToJson<JSONObject, SAMockPositionModel>() {
                             @Override
-                                public JSONObject traverseItem(SAPosition param) {
+                                public JSONObject traverseItem(SAMockPositionModel param) {
                                     return param.writeToJson();
                                 }
                             }));

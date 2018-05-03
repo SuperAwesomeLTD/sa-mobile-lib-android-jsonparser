@@ -8,17 +8,17 @@ import tv.superawesome.lib.sajsonparser.SAJsonParser;
 /**
  * Created by gabriel.coman on 11/11/16.
  */
-public class SALongHolder extends SABaseObject {
+public class SAMockLongHolderModel extends SABaseObject {
 
     public int val1;
     public long val2;
 
-    public SALongHolder(int val1, long val2) {
+    public SAMockLongHolderModel(int val1, long val2) {
         this.val1 = val1;
         this.val2 = val2;
     }
 
-    public SALongHolder (JSONObject jsonObject) {
+    public SAMockLongHolderModel(JSONObject jsonObject) {
         super(jsonObject);
     }
 

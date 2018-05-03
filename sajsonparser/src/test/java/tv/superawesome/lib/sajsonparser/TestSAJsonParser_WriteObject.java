@@ -8,9 +8,9 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.util.Arrays;
 
-import tv.superawesome.lib.sajsonparser.mocks.SACompany;
-import tv.superawesome.lib.sajsonparser.mocks.SAEmployee;
-import tv.superawesome.lib.sajsonparser.mocks.SAPosition;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockCompanyModel;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockEmployeeModel;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockPositionModel;
 
 /**
  * Created by gabriel.coman on 17/10/16.
@@ -20,7 +20,7 @@ public class TestSAJsonParser_WriteObject {
     @Test
     public void test_SAJsonparser_WriteObject_WithSimpleObject () {
         // given
-        SAPosition position = new SAPosition("CEO", 100000);
+        SAMockPositionModel position = new SAMockPositionModel("CEO", 100000);
 
         // when
         JSONObject expected = new JSONObject();
@@ -45,9 +45,9 @@ public class TestSAJsonParser_WriteObject {
     @Test
     public void test_SAJsonparser_WriteObject_WithNestedObject () throws Exception {
         // given
-        SAPosition given1 = new SAPosition("Junior Engineer", 28000);
-        SAPosition given2 = new SAPosition("Engineer", 35000);
-        SAEmployee given = new SAEmployee("Jim", 23, true, given2, Arrays.asList(given1));
+        SAMockPositionModel given1 = new SAMockPositionModel("Junior Engineer", 28000);
+        SAMockPositionModel given2 = new SAMockPositionModel("Engineer", 35000);
+        SAMockEmployeeModel given = new SAMockEmployeeModel("Jim", 23, true, given2, Arrays.asList(given1));
 
         // when
         JSONObject ex1 = new JSONObject();
@@ -74,14 +74,14 @@ public class TestSAJsonParser_WriteObject {
     @Test
     public void test_SAJsonparser_WriteObject_WithVeryComplexObject () throws Exception {
         // given
-        SAPosition given00 = new SAPosition("Intern", 0);
-        SAPosition given11 = new SAPosition("Junior Engineer", 28000);
-        SAPosition given12 = new SAPosition("Engineer", 35000);
+        SAMockPositionModel given00 = new SAMockPositionModel("Intern", 0);
+        SAMockPositionModel given11 = new SAMockPositionModel("Junior Engineer", 28000);
+        SAMockPositionModel given12 = new SAMockPositionModel("Engineer", 35000);
 
-        SAEmployee given1 = new SAEmployee("John", 23, true, given11, Arrays.asList(given00));
-        SAEmployee given2 = new SAEmployee("Danna", 18, true, given12, Arrays.asList(given00, given11));
+        SAMockEmployeeModel given1 = new SAMockEmployeeModel("John", 23, true, given11, Arrays.asList(given00));
+        SAMockEmployeeModel given2 = new SAMockEmployeeModel("Danna", 18, true, given12, Arrays.asList(given00, given11));
 
-        SACompany given = new SACompany("John Smith Ltd", Arrays.asList(given1, given2));
+        SAMockCompanyModel given = new SAMockCompanyModel("John Smith Ltd", Arrays.asList(given1, given2));
 
         // when
         JSONObject ex00 = new JSONObject();
@@ -114,8 +114,8 @@ public class TestSAJsonParser_WriteObject {
     @Test
     public void test_SAJsonparser_WriteObject_WithNulls () throws Exception {
         // given
-        SAPosition position = new SAPosition("Junior Engineer", 28000);
-        SAEmployee given = new SAEmployee(null, 32, false, null, Arrays.asList(position));
+        SAMockPositionModel position = new SAMockPositionModel("Junior Engineer", 28000);
+        SAMockEmployeeModel given = new SAMockEmployeeModel(null, 32, false, null, Arrays.asList(position));
 
         // then
         JSONObject pos = new JSONObject();

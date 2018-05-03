@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import tv.superawesome.lib.sajsonparser.mocks.SAEmployee;
-import tv.superawesome.lib.sajsonparser.mocks.SALongHolder;
-import tv.superawesome.lib.sajsonparser.mocks.SAPosition;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockEmployeeModel;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockLongHolderModel;
+import tv.superawesome.lib.sajsonparser.mocks.SAMockPositionModel;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -27,13 +27,13 @@ public class TestSAJsonParser_ParseObject {
         String given = "{ \"name\": \"John\", \"age\": 32, \"isActive\": true, \"position\":"+given1+", \"previous\":["+given0+"] }";
 
         // when
-        SAPosition expected0 = new SAPosition("Intern", 0);
-        SAPosition expected1 = new SAPosition("Junior Engineer", 28000);
-        SAEmployee expected = new SAEmployee("John", 32, true, expected1, Arrays.asList(expected0));
+        SAMockPositionModel expected0 = new SAMockPositionModel("Intern", 0);
+        SAMockPositionModel expected1 = new SAMockPositionModel("Junior Engineer", 28000);
+        SAMockEmployeeModel expected = new SAMockEmployeeModel("John", 32, true, expected1, Arrays.asList(expected0));
 
         // then
         JSONObject jsonObject = SAJsonParser.newObject(given);
-        SAEmployee result = new SAEmployee(jsonObject);
+        SAMockEmployeeModel result = new SAMockEmployeeModel(jsonObject);
 
         // assert
         assertNotNull(jsonObject);
@@ -55,11 +55,11 @@ public class TestSAJsonParser_ParseObject {
         String given0 = "{ \"val1\": 128, \"val2\": 1478862037 }";
 
         // when
-        SALongHolder expected0 = new SALongHolder(128, 1478862037);
+        SAMockLongHolderModel expected0 = new SAMockLongHolderModel(128, 1478862037);
 
         // then
         JSONObject jsonObject = SAJsonParser.newObject(given0);
-        SALongHolder result = new SALongHolder(jsonObject);
+        SAMockLongHolderModel result = new SAMockLongHolderModel(jsonObject);
 
         // assert
         assertNotNull(jsonObject);
@@ -74,11 +74,11 @@ public class TestSAJsonParser_ParseObject {
         String given = null;
 
         // expected
-        SAPosition expected = new SAPosition();
+        SAMockPositionModel expected = new SAMockPositionModel();
 
         // then
         JSONObject jsonObject = SAJsonParser.newObject(given);
-        SAPosition result = new SAPosition(jsonObject);
+        SAMockPositionModel result = new SAMockPositionModel(jsonObject);
 
         // assert
         assertNotNull(jsonObject);
@@ -89,16 +89,16 @@ public class TestSAJsonParser_ParseObject {
     }
 
     @Test
-    public void test_SAJsonParser_ParseObject_WithInvalidInput () {
+    public void test_SAJsonParser_ParseObject_WithMissingValues () {
         // given
         String given = "{ \"name\": \"CEO\" }";
 
         // expected
-        SAPosition expected = new SAPosition("CEO", 0);
+        SAMockPositionModel expected = new SAMockPositionModel("CEO", 0);
 
         // then
         JSONObject jsonObject = SAJsonParser.newObject(given);
-        SAPosition result = new SAPosition(jsonObject);
+        SAMockPositionModel result = new SAMockPositionModel(jsonObject);
 
         // assert
         assertNotNull(jsonObject);
@@ -122,9 +122,9 @@ public class TestSAJsonParser_ParseObject {
         JSONObject jsonObject2 = SAJsonParser.newObject(given2);
         JSONObject jsonObject3 = SAJsonParser.newObject(given3);
 
-        SAPosition expected1 = new SAPosition(jsonObject1);
-        SAPosition expected2 = new SAPosition(jsonObject2);
-        SAPosition expected3 = new SAPosition(jsonObject3);
+        SAMockPositionModel expected1 = new SAMockPositionModel(jsonObject1);
+        SAMockPositionModel expected2 = new SAMockPositionModel(jsonObject2);
+        SAMockPositionModel expected3 = new SAMockPositionModel(jsonObject3);
 
         // assert
         assertNotNull(jsonObject1);

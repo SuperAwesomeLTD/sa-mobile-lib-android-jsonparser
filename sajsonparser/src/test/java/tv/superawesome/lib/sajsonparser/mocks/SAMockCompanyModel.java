@@ -12,26 +12,26 @@ import tv.superawesome.lib.sajsonparser.SAListToJson;
 /**
  * Created by gabriel.coman on 18/10/16.
  */
-public class SACompany extends SABaseObject {
+public class SAMockCompanyModel extends SABaseObject {
     public String name;
-    public List<SAEmployee> employees;
+    public List<SAMockEmployeeModel> employees;
 
-    public SACompany (String name, List<SAEmployee> employees) {
+    public SAMockCompanyModel(String name, List<SAMockEmployeeModel> employees) {
         this.name = name;
         this.employees = employees;
     }
 
-    public SACompany (JSONObject jsonObject) {
+    public SAMockCompanyModel(JSONObject jsonObject) {
         super(jsonObject);
     }
 
     @Override
     public void readFromJson(JSONObject json) {
         name = SAJsonParser.getString(json, "name");
-        employees = SAJsonParser.getListFromJsonArray(json, "employees", new SAJsonToList<SAEmployee, JSONObject>() {
+        employees = SAJsonParser.getListFromJsonArray(json, "employees", new SAJsonToList<SAMockEmployeeModel, JSONObject>() {
             @Override
-            public SAEmployee traverseItem(JSONObject param) {
-                return new SAEmployee(param);
+            public SAMockEmployeeModel traverseItem(JSONObject param) {
+                return new SAMockEmployeeModel(param);
             }
         });
     }
@@ -39,9 +39,9 @@ public class SACompany extends SABaseObject {
     @Override
     public JSONObject writeToJson() {
         return SAJsonParser.newObject("name", name,
-                "employees", SAJsonParser.getJsonArrayFromList(employees, new SAListToJson<JSONObject, SAEmployee>() {
+                "employees", SAJsonParser.getJsonArrayFromList(employees, new SAListToJson<JSONObject, SAMockEmployeeModel>() {
                                 @Override
-                                public JSONObject traverseItem(SAEmployee param) {
+                                public JSONObject traverseItem(SAMockEmployeeModel param) {
                                     return param.writeToJson();
                                 }
                             }));

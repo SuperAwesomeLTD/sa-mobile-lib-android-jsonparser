@@ -8,21 +8,21 @@ import tv.superawesome.lib.sajsonparser.SAJsonParser;
 /**
  * Created by gabriel.coman on 18/10/16.
  */
-public class SAPosition extends SABaseObject {
+public class SAMockPositionModel extends SABaseObject {
     public String name;
     public int salary;
 
-    public SAPosition () {
+    public SAMockPositionModel() {
 
     }
 
-    public SAPosition (String name, int salary) {
+    public SAMockPositionModel(String name, int salary) {
         super();
         this.name = name;
         this.salary = salary;
     }
 
-    public SAPosition(JSONObject jsonObject) {
+    public SAMockPositionModel(JSONObject jsonObject) {
         super(jsonObject);
     }
 

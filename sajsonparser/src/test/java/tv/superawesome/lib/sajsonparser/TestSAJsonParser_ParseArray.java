@@ -13,7 +13,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 public class TestSAJsonParser_ParseArray {
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithNumbersArray () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithJsonStringOfArrayOfNumbers () throws Exception {
         // given
         String given = "[ 23, 5, 2, 8 ]";
 
@@ -28,7 +28,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithMixedArray () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithJsonStringofArrayOfDifferentObjects () throws Exception {
         // given
         String given = "[ 23, 5, \"papa\", null ]";
 
@@ -43,7 +43,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithComplexObjects () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithJsonStringOfComplexObjects () throws Exception {
         // given
         String given = "[ 23, \"papa\", { \"name\": \"john\", \"age\": 23 }, { \"name\": \"theresa\" } ]";
 
@@ -68,7 +68,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithEmptyString () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithEmptyJsonString() throws Exception {
         // given
         String given = "";
 
@@ -82,7 +82,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithNullString () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithNullJsonString () throws Exception {
         // given
         String given = null;
 
@@ -95,7 +95,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithInvalidString () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithInvalidJsonString () throws Exception {
         // given
         String given1 = "[ 3, 3, \" abc ";
         String given2 = "[ 3, 3, \" abc ";
@@ -115,7 +115,7 @@ public class TestSAJsonParser_ParseArray {
     }
 
     @Test
-    public void test_SAJsonParser_ParseArray_WithObjectInsteadOfArray () throws Exception {
+    public void test_SAJsonParser_ParseArray_WithJsonStringOfObjectInsteadOfArray () throws Exception {
         // given
         String given = "{ \"name\": \"John\", \"age\": 35 }";
 
